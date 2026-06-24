@@ -1,0 +1,289 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    PUSH TO GITHUB - STEP BY STEP                            ║
+║                                                                              ║
+║                    For: varshnim15/performance_optimization                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+⚠️  IMPORTANT - COMPLETE THIS FIRST:
+═══════════════════════════════════════════════════════════════════════════════
+
+Your Mac is showing an Xcode installation dialog. You need to:
+
+1. Open a Terminal or look for an Xcode popup window
+2. Click "Install" when prompted for Xcode Command Line Tools
+3. Wait 5-15 minutes for installation to complete
+4. Then follow the git commands below
+
+
+STEP 1: CREATE GITHUB REPOSITORY
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Open browser and go to: https://github.com/new
+
+2. Fill in the form:
+   
+   Repository name:
+   ├─ Type: performance_optimization
+   
+   Description:
+   ├─ Type: AI-Powered Performance Optimizer & Predictive Monitoring Platform
+   
+   Privacy:
+   ├─ Select: Public
+   
+   Add .gitignore:
+   ├─ Optional (we have one already)
+   
+   Add license:
+   ├─ Optional (MIT recommended)
+
+3. Click the big green "Create repository" button
+
+4. You'll see a page with setup instructions. Keep this page open!
+
+
+STEP 2: VERIFY GIT IS INSTALLED (After Xcode finishes)
+═══════════════════════════════════════════════════════════════════════════════
+
+Open Terminal and run:
+
+    git --version
+
+Should show something like: git version 2.x.x
+
+
+STEP 3: CONFIGURE GIT (First time only)
+═══════════════════════════════════════════════════════════════════════════════
+
+Copy and paste these commands in Terminal:
+
+    git config --global user.name "Varshni Mbalkar"
+    git config --global user.email "your-email@example.com"
+
+Replace "your-email@example.com" with your actual email address.
+
+
+STEP 4: INITIALIZE AND PUSH
+═══════════════════════════════════════════════════════════════════════════════
+
+Copy and paste these commands in Terminal (one at a time or all together):
+
+    cd /Users/varshanimbalkar/Downloads/smart-sentiment-system-main/Performance_Optimization
+    
+    git init
+    
+    git add .
+    
+    git commit -m "Initial commit: AI-Powered Performance Optimizer Platform"
+    
+    git branch -M main
+    
+    git remote add origin https://github.com/varshnim066/performance_optimization.git
+    
+    git push -u origin main
+
+When asked for password:
+├─ Username: varshnim15
+└─ Password: [Use GitHub Personal Access Token - see below]
+
+
+STEP 5: CREATE GITHUB PERSONAL ACCESS TOKEN (If needed)
+═══════════════════════════════════════════════════════════════════════════════
+
+If you don't have a PAT (Personal Access Token):
+
+1. Go to: https://github.com/settings/tokens
+
+2. Click: "Generate new token" → "Generate new token (classic)"
+
+3. Fill in:
+   ├─ Token name: GitHub CLI
+   ├─ Expiration: 90 days
+   └─ Scopes: Check "repo" (full control)
+
+4. Click: "Generate token"
+
+5. COPY THE TOKEN (you won't see it again!)
+
+6. Use this token as the password when git push prompts you
+
+
+STEP 6: VERIFY THE PUSH
+═══════════════════════════════════════════════════════════════════════════════
+
+After push completes, verify:
+
+1. Go to: https://github.com/varshnim066/performance_optimization
+
+2. You should see:
+   ├─ All your project files
+   ├─ Folder structure (services/, infra/, docs/, scripts/)
+   ├─ All documentation files
+   ├─ docker-compose.yml
+   └─ README.md
+
+3. In Terminal, verify:
+   
+    git remote -v
+    
+   Should show:
+   ├─ origin  https://github.com/varshnim066/performance_optimization.git (fetch)
+   └─ origin  https://github.com/varshnim066/performance_optimization.git (push)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                         WHAT GETS PUSHED
+═══════════════════════════════════════════════════════════════════════════════
+
+Source Code:
+  ✓ services/frontend/          - Next.js React Dashboard
+  ✓ services/backend/           - Spring Boot API Server
+  ✓ services/ai_service/        - FastAPI ML Service
+
+Configuration:
+  ✓ docker-compose.yml          - Docker Compose setup
+  ✓ infra/kubernetes/           - Kubernetes manifests
+  ✓ infra/monitoring/           - Prometheus, Grafana, AlertManager
+
+Database:
+  ✓ scripts/init-db.sql         - MySQL schema initialization
+
+Documentation (10+ guides):
+  ✓ README.md                   - Project overview
+  ✓ QUICK_START.md              - Fast setup
+  ✓ ARCHITECTURE.md             - System design
+  ✓ AWS_DEPLOYMENT.md           - Cloud deployment
+  ✓ DEPLOYMENT.md               - Production procedures
+  ✓ DEPLOY_TO_ANOTHER_LAPTOP.md - Multi-laptop deployment
+  ✓ MULTI_MACHINE_DEPLOYMENT.md - Multi-machine setup
+  ✓ GITHUB_SETUP.md             - GitHub push instructions
+  ✓ Plus 5+ more comprehensive guides
+
+Configuration Files:
+  ✓ .gitignore                  - Excludes secrets and build files
+  ✓ .dockerignore               - Docker build optimization
+  ✓ pom.xml                     - Maven dependencies
+  ✓ package.json                - NPM dependencies
+  ✓ requirements.txt            - Python dependencies
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                        TROUBLESHOOTING
+═══════════════════════════════════════════════════════════════════════════════
+
+Problem: "xcode-select: note: No developer tools were found"
+
+Solution:
+  1. Look for Xcode Command Line Tools installation dialog
+  2. Click "Install" button
+  3. Wait 5-15 minutes
+  4. Try git command again
+
+
+Problem: "fatal: not a git repository"
+
+Solution:
+  Make sure you're in the correct directory:
+  
+    cd /Users/varshanimbalkar/Downloads/smart-sentiment-system-main/Performance_Optimization
+    git init
+
+
+Problem: "remote origin already exists"
+
+Solution:
+  Run:
+    git remote remove origin
+    git remote add origin https://github.com/varshnim066/performance_optimization.git
+
+
+Problem: "Authentication failed"
+
+Solution:
+  Check your PAT token is correct:
+  1. Go to https://github.com/settings/tokens
+  2. Generate a new token if needed
+  3. Copy the new token and use it as password
+
+
+Problem: "Permission denied (publickey)"
+
+Solution:
+  Use HTTPS instead of SSH:
+  
+    git remote remove origin
+    git remote add origin https://github.com/varshnim066/performance_optimization.git
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                      AFTER SUCCESSFUL PUSH
+═══════════════════════════════════════════════════════════════════════════════
+
+1. Check your repository:
+   https://github.com/varshnim066/performance_optimization
+
+2. Add topics (Optional but recommended):
+   - Go to repo → Settings → Topics
+   - Add: docker, kubernetes, monitoring, machine-learning, python, java, react
+
+3. Update README description:
+   - Click pencil icon next to repo name
+   - Add description and link to documentation
+
+4. Enable GitHub Pages (Optional):
+   - Settings → Pages
+   - Source: main
+   - This will build docs at: varshnim15.github.io/performance_optimization
+
+5. Share the link:
+   https://github.com/varshnim066/performance_optimization
+
+
+═══════════════════════════════════════════════════════════════════════════════
+                        QUICK COMMAND REFERENCE
+═══════════════════════════════════════════════════════════════════════════════
+
+After initial setup, here's how to work with the repo:
+
+Check status:
+  git status
+
+See recent commits:
+  git log --oneline -5
+
+View remote:
+  git remote -v
+
+Make changes and push:
+  git add .
+  git commit -m "Your message here"
+  git push
+
+Create a feature branch:
+  git checkout -b feature-name
+  git push -u origin feature-name
+
+Switch back to main:
+  git checkout main
+
+Pull latest changes:
+  git pull origin main
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⏱️  TIMELINE:
+
+1. Now:           Approve Xcode installation dialog (if appears)
+2. Next 5-15 min: Wait for installation
+3. After install: Run git commands from STEP 4
+4. After push:    Verify at https://github.com/varshnim066/performance_optimization
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ Ready? Follow the steps above!
+
+If any issues, check TROUBLESHOOTING section or review GITHUB_SETUP.md
+
+Created: June 24, 2026

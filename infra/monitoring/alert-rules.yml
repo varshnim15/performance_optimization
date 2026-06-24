@@ -1,0 +1,108 @@
+groups:
+  - name: infrastructure
+    interval: 30s
+    rules:
+      - alert: HighCPUUsage
+        expr: node_cpu_seconds_total > 90
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU Usage detected on {{ $labels.instance }}"
+          description: "CPU usage is {{ $value }}%"
+
+      - alert: CriticalCPUUsage
+        expr: node_cpu_seconds_total > 95
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical CPU Usage on {{ $labels.instance }}"
+          description: "CPU usage is {{ $value }}%"
+
+      - alert: HighMemoryUsage
+        expr: node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes < 0.25
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Memory Usage on {{ $labels.instance }}"
+          description: "Available memory: {{ $value | humanize }}%"
+
+      - alert: DiskSpaceWarning
+        expr: node_filesystem_avail_bytes / node_filesystem_size_bytes < 0.2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low Disk Space on {{ $labels.instance }}"
+          description: "Available disk: {{ $value | humanize }}%"
+
+      - alert: DiskSpaceCritical
+        expr: node_filesystem_avail_bytes / node_filesystem_size_bytes < 0.1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Critical Disk Space on {{ $labels.instance }}"
+          description: "Available disk: {{ $value | humanize }}%"
+
+  - name: application
+    interval: 30s
+    rules:
+      - alert: HighErrorRate
+        expr: rate(application_errors_total[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Error Rate in Application"
+          description: "Error rate: {{ $value | humanizePercentage }}"
+
+      - alert: SlowResponseTime
+        expr: application_response_time_seconds > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow Response Time detected"
+          description: "Response time: {{ $value }}s"
+
+      - alert: DatabaseConnectionPoolExhausted
+        expr: database_connection_pool_active / database_connection_pool_max > 0.9
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database Connection Pool Critical"
+          description: "Pool usage: {{ $value | humanizePercentage }}"
+
+      - alert: HighQueryLatency
+        expr: database_query_latency_seconds > 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Database Query Latency"
+          description: "Query latency: {{ $value }}s"
+
+  - name: network
+    interval: 30s
+    rules:
+      - alert: HighNetworkLatency
+        expr: network_latency_ms > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Network Latency"
+          description: "Latency: {{ $value }}ms"
+
+      - alert: PacketLoss
+        expr: network_packet_loss_percent > 1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Network Packet Loss Detected"
+          description: "Packet loss: {{ $value }}%"
